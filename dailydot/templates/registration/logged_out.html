@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container text-white position-relative z-1 d-flex align-items-center justify-content-center flex-column vh-100">
+  <h2 class="display-1">Вы вышли из своего профиля</h2>
+  <div class="py-5 display-6">
+    <p>Теперь вы можете войти или вернуться на главную</p>
+  </div>
+  <p>
+    <a href="{% url 'login' %}" class='px-5 h4'>Войти</a>
+    <a href="{% url 'main:index' %}" class='px-5 h4'>На главную</a>
+  </p>
+</div>
+
+{% endblock %}

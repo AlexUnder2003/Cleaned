@@ -1,0 +1,69 @@
+{% load static %}
+{% load django_bootstrap5 %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <title>Форма и Видео</title>
+    {% bootstrap_css %}
+    <style>
+        #background-video {
+            object-fit: cover;
+            height: 100vh;
+        }
+
+        .form-container {
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            max-width: 350px; /* Limit width to prevent stretching */
+            margin: 0 auto; /* Center the form */
+        }
+
+        .form-control {
+            width: 100%; /* Ensure form controls fill the container */
+        }
+
+        .button-login {
+            width: 100%; /* Ensure button fills the container */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container-fluid d-flex vh-100 p-0">
+        <div class="row w-100 justify-content-center align-items-center">
+            <!-- Колонка для формы -->
+            <div class="col-md-4 col-10">
+                <div class="form-container">
+                    <h3>Войти в систему</h3>
+                    <form method="post">
+                        {% csrf_token %}
+                        {% bootstrap_form form %}
+                        <button type="submit" class="btn btn-secondary button-login">Войти</button>
+                    </form>
+                    <div class="mt-3">
+                        Нету аккаунта? <a href="{% url 'registration' %}">Зарегистрироваться</a>
+                    </div>
+                    <div class="mt-3">
+                        Забыли пароль? <a href="{% url 'password_reset' %}">Восстановить пароль</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Колонка для видео -->
+            <div class="col-md-8 p-0 d-none d-md-block">
+                <video autoplay muted loop id="background-video" class="w-100">
+                    <source src="{% static 'background/1114.mp4' %}" type="video/mp4">
+                    Ваш браузер не поддерживает видео.
+                </video>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

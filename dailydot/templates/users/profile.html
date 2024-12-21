@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Profile
+{% endblock title %}
+
+
+{% block content %}
+<div class="container text-white position-relative z-1 vh-100 d-flex justify-content-center align-items-center">
+    <div class="days-count text-center">
+        <h1 class="display-3">Профиль пользователя: {{ object.username }}</h1>
+        <div style="display: flex; align-items: center; gap: 10px;">
+            <a href="{% url 'password_change' %}">
+                <div class="text-start display-6">Сменить пароль</div>
+            </a>
+
+            <form method="post" action="{% url 'logout' %}" class="px-5">
+                {% csrf_token %}
+                <button type="submit" class="buttonlogout text-white px-6">
+                    <div class="text-start display-6">Выйти</div>
+                </button>
+            </form>
+        </div>
+
+
+    </div>
+</div>
+{% endblock content %}

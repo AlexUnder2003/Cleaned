@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load django_bootstrap5 %}
+
+{% block content %}
+<div class="container text-white position-relative z-1 vh-100 d-flex justify-content-center align-items-center">
+    <div class="days-count">
+        <form action="" method="post">
+            {% csrf_token %}
+            <h1 class="display-1">{{ form.name }}</h1>
+            <div class="px-2 display-6">
+                И нажмите Enter
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock content %}
